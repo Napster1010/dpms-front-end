@@ -1,0 +1,31 @@
+<div class="col-md-6 offset-md-1 form-container">
+    <form (ngSubmit)="addAdmin(addAdminForm)" #addAdminForm="ngForm">
+
+        <table class="table table-borderless col-md-10">
+            <tr>
+                <td class="align-middle">
+                    <label for="username">Enter username</label>
+                </td>
+                <td>
+                    <input class="form-control" type="text" id="username" name="username" ngModel #username="ngModel" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="align-middle">
+                    <label for="password">Enter Password</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="password" name="password" ngModel #password="ngModel" autocomplete="off" required>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="text-right">
+                    <button class="btn btn-lg btn-primary" type="submit" [disabled]="!addAdminForm.valid || submitted==true">Add Admin</button>
+                    <img *ngIf="loading==true" src="../../../assets/loading.gif">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>

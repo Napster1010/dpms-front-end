@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card border border-dark main-card">
+                <div class="card-header text-center bg-dark">
+                    Welcome {{username}}
+                </div>
+
+                <div class="list-group text-center">
+                    <button class="btn list-group-item list-group-item-action" (click)="linkChange(1)"
+                        [class.active]="currentLink===1" routerLink="add-admin">Add Admin</button>
+
+                    <button class="btn list-group-item list-group-item-action" (click)="linkChange(2)"
+                        [class.active]="currentLink===2" routerLink="add-doctor">Add Doctor</button>
+
+                    <button class="btn list-group-item list-group-item-action" (click)="linkChange(3)"
+                        [class.active]="currentLink===3" routerLink="add-patient">Add Patient</button>
+
+                    <button class="btn list-group-item list-group-item-action" (click)="linkChange(4)"
+                        [class.active]="currentLink===4" routerLink="manage-appointment">Manage Appointments</button>
+
+                    <button class="btn list-group-item list-group-item-action" (click)="linkChange(5)"
+                        [class.active]="currentLink===5" routerLink="add-branch">Add Branch</button>
+
+                    <button class="btn list-group-item list-group-item-action" (click)="logout()">Logout</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card border border-dark inside-card">
+                <div class="card-header text-center bg-dark">
+                    <strong>Patient Management System</strong>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="col-md-6 offset-md-1 form-container">
+    <form (ngSubmit)="addBranch(addBranchForm)" #addBranchForm="ngForm">
+
+        <table class="table table-borderless col-md-10">
+            <tr>
+                <td class="align-middle">
+                    <label for="code">Enter Branch Code</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="code" name="code" ngModel #code="ngModel" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                    <label for="name">Enter Branch Name</label>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="name" name="name" ngModel #name="ngModel" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                    <label for="address">Enter Address</label>
+                </td>
+                <td>
+                    <textarea type="text" rows="3" class="form-control" id="address" name="address" ngModel
+                        #address="ngModel" required></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="text-right">
+                    <button class="btn btn-lg btn-primary" type="submit"
+                        [disabled]="!addBranchForm.valid || submitted==true">Add Branch</button>
+                    <img *ngIf="loading==true" src="../../../assets/loading.gif">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>

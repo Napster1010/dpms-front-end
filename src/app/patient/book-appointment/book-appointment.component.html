@@ -1,0 +1,55 @@
+<div class="col-md-6 offset-md-1 form-container">
+    <form (ngSubmit)="bookAppointment(bookAppointmentForm)" #bookAppointmentForm="ngForm">
+
+        <table class="table table-borderless col-md-10">
+            <tr>
+                <td class="align-middle">
+                    <label for="branch">Select Branch</label>
+                </td>
+                <td>
+                    <select class="form-control" name="branch" id="branch" [(ngModel)]="selectedBranch">
+                        <option *ngFor="let branch of branches" value="{{ branch.code }}">{{ branch.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                    <label for="contactNo">Select Doctor</label>
+                </td>
+                <td>
+                    <select class="form-control" name="doctor" id="doctor" [(ngModel)]="selectedDoctor">
+                        <option *ngFor="let doctor of doctors" value="{{ doctor.user.username }}">Dr. {{ doctor.name }} ({{ doctor.specialization }})</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                    <label for="appointmentDate">Select Date</label>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="yyyy-MM-dd" ngbDatepicker
+                            #appointmentDate="ngbDatepicker" ngModel name="appointmentDate" id="appointmentDate" />
+
+                        <button type="button" (click)="appointmentDate.toggle()">
+                            <span class="fa fa-calendar" aria-hidden="true"
+                                style="font-size: 30px;color: crimson;"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="text-right">
+                    <button class="btn btn-lg btn-primary" type="submit"
+                        [disabled]="!bookAppointmentForm.valid || submitted==true">Book Appointment</button>
+                    <img *ngIf="loading==true" src="../../../assets/loading.gif">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>
