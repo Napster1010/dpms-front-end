@@ -1,1 +1,39 @@
-<p>upload-record works!</p>
+<div class="col-md-6 offset-md-1 form-container">
+    <form (ngSubmit)="uploadRecord(uploadRecordForm)" #uploadRecordForm="ngForm" enctype="multipart/form-data">
+
+        <table class="table table-borderless col-md-12">
+            <tr>
+                <td class="align-middle">
+                    <label for="documentType">Select Document Type</label>
+                </td>
+                <td>
+                    <select class="form-control" name="documentType" id="documentType"
+                        [(ngModel)]="selectedDocumentType" required>
+                        <option value="Test Report">Test Report</option>
+                        <option value="Prescription">Prescription</option>
+                        <option value="Other Record">Other Record</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                    <label for="document">Select Document</label>
+                </td>
+                <td>
+                    <input type="file" class="form-control-file" id="document" name="document" (change)="changeFile($event.target.files)" ngModel required>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="text-right">
+                    <button class="btn btn-lg btn-primary" type="submit"
+                        [disabled]="!uploadRecordForm.valid || submitted==true">Upload Record</button>
+                    <img *ngIf="loading==true" src="../../../assets/loading.gif">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>

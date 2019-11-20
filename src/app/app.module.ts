@@ -23,6 +23,8 @@ import { ViewPrescriptionsComponent } from './patient/view-prescriptions/view-pr
 import { AddBranchComponent } from './admin/add-branch/add-branch.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ViewAppointmentsComponent } from './doctor/view-appointments/view-appointments.component';
+import { ViewMedicalRecordComponent } from './doctor/view-medical-record/view-medical-record.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DoctorHomepageComponent,
     UploadPrescriptionComponent,
     ViewPrescriptionsComponent,
-    AddBranchComponent
+    AddBranchComponent,
+    ViewAppointmentsComponent,
+    ViewMedicalRecordComponent
   ],
   imports: [
     BrowserModule,

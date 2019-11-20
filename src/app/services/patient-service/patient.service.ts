@@ -1,5 +1,5 @@
 import { environment } from './../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -18,5 +18,14 @@ export class PatientService {
     }
 
     return this.http.post<any>(environment.baseUrl + `/appointment`, reqObj);
+  }
+
+  uploadMedicalRecord(document: File, documentType: string, patientUserName: string){
+    let body = new FormData();
+    body.append('document', document);
+    body.append('documentType', documentType);
+    body.append('patientUsername', patientUserName);
+
+    return this.http.post<any>(environment.baseUrl + `/document`, body);
   }
 }

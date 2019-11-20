@@ -7,7 +7,7 @@
                     <label for="branch">Select Branch</label>
                 </td>
                 <td>
-                    <select class="form-control" name="branch" id="branch" [(ngModel)]="selectedBranch">
+                    <select class="form-control" name="branch" id="branch" [(ngModel)]="selectedBranch" required>
                         <option *ngFor="let branch of branches" value="{{ branch.code }}">{{ branch.name }}</option>
                     </select>
                 </td>
@@ -15,10 +15,10 @@
 
             <tr>
                 <td class="align-middle">
-                    <label for="contactNo">Select Doctor</label>
+                    <label for="doctor">Select Doctor</label>
                 </td>
                 <td>
-                    <select class="form-control" name="doctor" id="doctor" [(ngModel)]="selectedDoctor">
+                    <select class="form-control" name="doctor" id="doctor" [(ngModel)]="selectedDoctor" required>
                         <option *ngFor="let doctor of doctors" value="{{ doctor.user.username }}">Dr. {{ doctor.name }} ({{ doctor.specialization }})</option>
                     </select>
                 </td>
@@ -31,7 +31,7 @@
                 <td>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="yyyy-MM-dd" ngbDatepicker
-                            #appointmentDate="ngbDatepicker" ngModel name="appointmentDate" id="appointmentDate" />
+                            #appointmentDate="ngbDatepicker" ngModel name="appointmentDate" id="appointmentDate" required/>
 
                         <button type="button" (click)="appointmentDate.toggle()">
                             <span class="fa fa-calendar" aria-hidden="true"

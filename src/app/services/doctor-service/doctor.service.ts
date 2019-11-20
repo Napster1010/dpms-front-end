@@ -12,4 +12,13 @@ export class DoctorService {
   getAllDoctors(){
     return this.http.get<any>(environment.baseUrl + `/doctor`);
   }
+
+  getAppointmentsByDoctorUsername(doctorUsername: string){
+    return this.http.get<any>(environment.baseUrl + `/appointment`, {
+      params: {
+        'doctorUsername': doctorUsername
+      }
+    });
+    
+  }
 }

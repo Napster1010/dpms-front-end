@@ -1,3 +1,5 @@
+import { ViewMedicalRecordComponent } from './doctor/view-medical-record/view-medical-record.component';
+import { ViewAppointmentsComponent } from './doctor/view-appointments/view-appointments.component';
 import { AddBranchComponent } from './admin/add-branch/add-branch.component';
 import { UploadPrescriptionComponent } from './doctor/upload-prescription/upload-prescription.component';
 import { ViewPrescriptionsComponent } from './patient/view-prescriptions/view-prescriptions.component';
@@ -36,7 +38,9 @@ const routes: Routes = [
   ]},
   {path: 'doctor', component: DoctorHomeComponent, children: [
     {path: 'home', component: DoctorHomepageComponent},
-    {path: 'upload-prescription', component: UploadPrescriptionComponent}
+    {path: 'view-appointments', component: ViewAppointmentsComponent},
+    {path: 'upload-prescription', component: UploadPrescriptionComponent},
+    {path: 'view-medical-record', component: ViewMedicalRecordComponent}
   ]},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
