@@ -18,10 +18,22 @@
 
             <tr>
                 <td class="align-middle">
+                    <label for="intendedDoctor">Send To</label>
+                </td>
+                <td>
+                    <select class="form-control" name="intendedDoctor" id="intendedDoctor" [(ngModel)]="selectedDoctor" required>
+                        <option *ngFor="let doctor of associatedDoctors" value="{{ doctor.user.username }}">{{ doctor.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
                     <label for="document">Select Document</label>
                 </td>
                 <td>
-                    <input type="file" class="form-control-file" id="document" name="document" (change)="changeFile($event.target.files)" ngModel required>
+                    <input type="file" class="form-control-file" id="document" name="document"
+                        (change)="changeFile($event.target.files)" ngModel required>
                 </td>
             </tr>
 

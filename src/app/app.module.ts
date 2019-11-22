@@ -25,6 +25,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewAppointmentsComponent } from './doctor/view-appointments/view-appointments.component';
 import { ViewMedicalRecordComponent } from './doctor/view-medical-record/view-medical-record.component';
+import { CheckAppointmentStatusComponent } from './patient/check-appointment-status/check-appointment-status.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ViewMedicalRecordComponent } from './doctor/view-medical-record/view-me
     ViewPrescriptionsComponent,
     AddBranchComponent,
     ViewAppointmentsComponent,
-    ViewMedicalRecordComponent
+    ViewMedicalRecordComponent,
+    CheckAppointmentStatusComponent
   ],
   imports: [
     BrowserModule,

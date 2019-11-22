@@ -1,1 +1,39 @@
-<p>upload-prescription works!</p>
+<div class="col-md-7 offset-md-1 form-container">
+    <form (ngSubmit)="uploadPrescription(uploadPrescriptionForm)" #uploadPrescriptionForm="ngForm">
+
+        <table class="table table-borderless col-md-12">
+            <tr>   
+
+            <tr>
+                <td class="align-middle">
+                    <label for="intendedPatient">Send To</label>
+                </td>
+                <td>
+                    <select class="form-control" name="intendedPatient" id="intendedPatient" [(ngModel)]="selectedPatient"
+                        required>
+                        <option *ngFor="let patient of associatedPatients" value="{{ patient.user.username }}">
+                            {{ patient.name }}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="align-middle">
+                </td>
+                <td>
+                    <textarea placeholder="Write prescription ....." class="form-control" name="prescription" id="prescription" cols="30" rows="17" ngModel required></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td class="text-right">
+                    <button class="btn btn-lg btn-primary" type="submit"
+                        [disabled]="!uploadPrescriptionForm.valid || submitted==true">Upload Prescription</button>
+                    <img *ngIf="loading==true" src="../../../assets/loading.gif">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</div>

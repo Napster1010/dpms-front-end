@@ -13,10 +13,33 @@ export class UploadRecordComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   fileChosen: File;
-
+  associatedDoctors: any[] = [];
+  selectedDoctor: string;
+  
   constructor(private patientService: PatientService) { }
 
   ngOnInit() {
+    let add: boolean;
+    this.patientService.getAllAssociatedDoctors(JSON.parse(localStorage.getItem('user'))['username']).subscribe(
+      data => {
+        for(let i=0;i<data.length;i++){
+          add = true;
+          for(let j=0; j<this.associatedDoctors.length; j++){
+             if(data[i]['user']['username']===this.associatedDoctors[j]['user']['username']){
+              add = false;            
+              break;
+             }
+          }
+          if(add)
+            this.associatedDoctors.push(data[i]);
+        }
+
+        this.selectedDoctor = this.associatedDoctors[0]['user']['username'];
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   uploadRecord(uploadRecordForm: NgForm) {
@@ -25,7 +48,7 @@ export class UploadRecordComponent implements OnInit {
 
     let formData = uploadRecordForm['form']['value'];
 
-    this.patientService.uploadMedicalRecord(this.fileChosen, formData['documentType'], JSON.parse(localStorage.getItem('user'))['username']).subscribe(
+    this.patientService.uploadMedicalRecord(this.fileChosen, formData['documentType'], JSON.parse(localStorage.getItem('user'))['username'], formData['intendedDoctor']).subscribe(
       data => {
         this.loading = false;
         Swal.fire({

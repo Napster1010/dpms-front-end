@@ -1,3 +1,4 @@
+import { CheckAppointmentStatusComponent } from './patient/check-appointment-status/check-appointment-status.component';
 import { ViewMedicalRecordComponent } from './doctor/view-medical-record/view-medical-record.component';
 import { ViewAppointmentsComponent } from './doctor/view-appointments/view-appointments.component';
 import { AddBranchComponent } from './admin/add-branch/add-branch.component';
@@ -34,7 +35,8 @@ const routes: Routes = [
     {path: 'home', component: PatientHomepageComponent},
     {path: 'book-appointment', component: BookAppointmentComponent},
     {path: 'view-prescriptions', component: ViewPrescriptionsComponent},
-    {path: 'upload-medical-record', component: UploadRecordComponent}    
+    {path: 'upload-medical-record', component: UploadRecordComponent},
+    {path: 'appointment-status', component: CheckAppointmentStatusComponent}    
   ]},
   {path: 'doctor', component: DoctorHomeComponent, children: [
     {path: 'home', component: DoctorHomepageComponent},

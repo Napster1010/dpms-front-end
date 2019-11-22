@@ -20,12 +20,37 @@ export class PatientService {
     return this.http.post<any>(environment.baseUrl + `/appointment`, reqObj);
   }
 
-  uploadMedicalRecord(document: File, documentType: string, patientUserName: string){
+  uploadMedicalRecord(document: File, documentType: string, patientUserName: string, doctorUsername: string){
     let body = new FormData();
     body.append('document', document);
     body.append('documentType', documentType);
     body.append('patientUsername', patientUserName);
+    body.append('doctorUsername', doctorUsername);
 
     return this.http.post<any>(environment.baseUrl + `/document`, body);
+  }
+
+  getAllAssociatedDoctors(patientUsername: string){
+    return this.http.get<any>(environment.baseUrl + `/patient/doctor`, {
+      params: {
+        'patientUsername': patientUsername
+      }
+    });
+  }
+
+  getAppointmentDetails(patientUsername: string){
+    return this.http.get<any>(environment.baseUrl + `/appointment/patient`, {
+      params: {
+        'patientUsername': patientUsername
+      }
+    });
+  }
+
+  getUploadedPrescriptions(patientUsername: string){
+    return this.http.get<any>(environment.baseUrl + `/patient/prescription`, {
+      params: {
+        'patientUsername': patientUsername
+      }
+    });
   }
 }
